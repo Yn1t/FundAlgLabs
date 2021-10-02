@@ -1,1 +1,2 @@
 read(A,10);
+write(b, 3);
