@@ -1,0 +1,3 @@
+#define name value
+#define hello friend
+My friend hello how are you can you say you name

@@ -1,2 +1,16 @@
 read(A,10);
-write(b, 3);
+read(B,10);
+write(A,10);
+write(B,10);
+A:=A + B;
+A:=A & B;
+A:=A -> B;
+A:=A<-B;
+A:=A ~ B;
+A:=A<>B;
+A:=A+>B;
+A:=A?B;
+A:=A!B;
+A:=\B;
+write(A,10);
+write(B,10);
