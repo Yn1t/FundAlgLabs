@@ -21,7 +21,7 @@ class Inter {
 		{ "xor", "xor" },
 		{ "input", "input" },
 		{ "output", "output" },
-		{"=", "="}
+		{ "=", "=" }
 	};
 	bool left_result = true;
 	enum Staples
@@ -31,7 +31,7 @@ class Inter {
 		Left_between,
 		Right_between
 	};
-	Staples staple_order = Staples::Left;
+	Staples staple_order = Left;
 	map<string, int> vect;
 
 public:
@@ -54,8 +54,6 @@ int main(int argc, char* argv[])
 	int i = 0;
 
 	Inter inter(argv[1], "file_in.txt");
-
-	cout << "";
 
 	return 0;
 }
@@ -131,9 +129,14 @@ Parser::~Parser()
 
 Inter::Inter(string file_syntax, string file_instruct)
 {
-	ifstream file_synt(file_syntax);
+	ifstream file_synt;
 
-	while (file_synt)
+	if (file_syntax != "")
+		file_synt.open(file_syntax);
+	else
+		file_synt.open("default.txt");
+
+	while (!file_synt.eof())
 	{
 		string str_inst = "";
 		char chr;
@@ -147,11 +150,10 @@ Inter::Inter(string file_syntax, string file_instruct)
 
 		str_inst = pre_parsing_instruct(str_inst);
 
-		if (str_inst[0] != '\0')
+		if (str_inst != "")
 		{
 			try
 			{
-
 				Inter_Parcer(str_inst);
 			}
 			catch (exception * ex)
@@ -214,7 +216,6 @@ void Inter::Inter_Parcer(string syntax)
 	}
 	else
 	{
-
 		++i;
 		string new_command = "";
 
