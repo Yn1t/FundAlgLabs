@@ -54,6 +54,8 @@ int main(int argc, char* argv[])
 
 	Inter inter(argv[1], "file_in.txt");
 
+	cout << "";
+
 	return 0;
 }
 
