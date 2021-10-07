@@ -4,39 +4,40 @@
 #include <algorithm>
 #include <fstream>
 #include <map>
+#include <exception>
 using namespace std;
 
 string pre_parsing_instruct(string str);
 string pre_parsing(string str);
 
 class Inter {
-	map<string, string> operations = { 
+	map<string, string> operations = {
 		{"add", "add"},
 		{ "mult", "mult" },
 		{ "sub", "sub" },
 		{ "pow", "pow" },
 		{ "div", "div" },
-		{ "rem", "rem" }, 
+		{ "rem", "rem" },
 		{ "xor", "xor" },
 		{ "input", "input" },
-		{ "output", "output" }, 
+		{ "output", "output" },
 		{"=", "="}
 	};
-	map<string, string> order = { {"result_order", "left"}, {"op_order", "left"} };
 	bool left_result = true;
-	enum class Staples
+	enum Staples
 	{
-		left,
-		right,
-		left_between,
-		right_between
+		Left,
+		Right,
+		Left_between,
+		Right_between
 	};
-	Staples staple_order = Staples::left;
+	Staples staple_order = Staples::Left;
 	map<string, int> vect;
 
 public:
 	Inter(string file_syntax, string file_instruct);
 	~Inter();
+	void returnToDefault();
 	void Inter_Parcer(string syntax);
 };
 
@@ -138,7 +139,7 @@ Inter::Inter(string file_syntax, string file_instruct)
 		char chr;
 		chr = file_synt.get();
 
-		while (chr != '\n' && file_synt)
+		while (chr != '\n' && !file_synt.eof())
 		{
 			str_inst += chr;
 			chr = file_synt.get();
@@ -148,7 +149,17 @@ Inter::Inter(string file_syntax, string file_instruct)
 
 		if (str_inst[0] != '\0')
 		{
-			this->Inter_Parcer(str_inst);
+			try
+			{
+
+				Inter_Parcer(str_inst);
+			}
+			catch (exception * ex)
+			{
+				cout << ex->what() << endl;
+				returnToDefault();
+				break;
+			}
 		}
 	}
 
@@ -160,7 +171,17 @@ Inter::~Inter()
 	ifstream def("default.txt");
 
 	//if (left_result)
-		
+
+}
+
+void Inter::returnToDefault()
+{
+	for (auto op : operations)
+	{
+		operations[op.first] = op.first;
+	}
+	staple_order = Left;
+	left_result = true;
 }
 
 void Inter::Inter_Parcer(string syntax)
@@ -179,21 +200,21 @@ void Inter::Inter_Parcer(string syntax)
 	else if (command == "right=")
 		left_result = false;
 	else if (command == "op()")
-		staple_order = Staples::left;
+		staple_order = Left;
 	else if (command == "()op")
-		staple_order = Staples::right;
+		staple_order = Right;
 	else if (command == "(op)()")
-		staple_order = Staples::left_between;
+		staple_order = Left_between;
 	else if (command == "()(op)")
-		staple_order = Staples::right_between;
+		staple_order = Right_between;
 	else if (operations[command].empty())
 	{
 		cout << "Error syntax" << endl;
-		exit(-1);
+		throw new exception("Incorrect syntax, use default settings");
 	}
 	else
 	{
-		
+
 		++i;
 		string new_command = "";
 
