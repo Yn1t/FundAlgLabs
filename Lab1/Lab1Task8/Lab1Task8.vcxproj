@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="default.txt" />
     <Text Include="file_in.txt" />
     <Text Include="instruction.txt" />
   </ItemGroup>

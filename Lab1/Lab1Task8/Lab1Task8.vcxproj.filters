@@ -26,5 +26,8 @@
     <Text Include="file_in.txt">
       <Filter>Header Files</Filter>
     </Text>
+    <Text Include="default.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

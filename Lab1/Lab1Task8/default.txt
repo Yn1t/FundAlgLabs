@@ -1,0 +1,12 @@
+left=
+(op)()
+= <->
+add sum
+div /
+input in
+mult prod
+output print
+pow ^
+rem %
+sub minus
+xor <>
