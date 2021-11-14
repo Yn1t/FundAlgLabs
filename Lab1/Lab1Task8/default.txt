@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 right=
+=======
+left=
+>>>>>>> f1478fcf97a0cb4e41d796615d69e160832a8ebc
 (op)()
 = <->
 add sum
