@@ -29,7 +29,7 @@ int main()
 
 	try
 	{
-		//avl_tree();
+		avl_tree();
 		//rb_tree();
 		//splay_tree();
 		//two_three_tree();
@@ -52,22 +52,22 @@ void avl_tree()
 {
 	Compare<int>* comp = new CompareInt;
 	Avl_tree<int, int> tree(comp);
-	int arr[200000];
-	for (int i = 0; i < 200000; ++i)
+	int arr[50];
+	for (int i = 0; i < 50; ++i)
 	{
 		arr[i] = i;
 	}
 
 	random_shuffle(begin(arr), end(arr));
 
-	for (int i = 0; i < 200000; ++i)
+	for (int i = 0; i < 50; ++i)
 	{
 		tree.insert({ arr[i], i });
 	}
 
-	for (int i = 0; i < 199999; i += 1)
+	//for (int i = 0; i < 50; i += 1)
 	{
-		tree.del(i);
+		//tree.del(i);
 	}
 	tree.infix(print_node<int, int>);
 

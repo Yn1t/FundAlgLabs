@@ -3,7 +3,6 @@
 
 int main()
 {
-
 	try
 	{
 		Compare<int>* comp = new CompareInt;

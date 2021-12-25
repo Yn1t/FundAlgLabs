@@ -342,7 +342,6 @@ public:
 		this->finder_ = new Find_template_binary_tree;
 		this->deleter_ = new Delete_template_binary_tree;
 		this->inserter_ = new Insert_template_binary_tree;
-		delete_tree(this->root);
 		this->root = nullptr;
 		prefix_copy(tree.root);
 	};

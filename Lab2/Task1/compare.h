@@ -12,6 +12,7 @@ class Compare
 {
 public:
 	virtual int compare(const T& left, const T& right) const = 0;
+	virtual ~Compare() {};
 };
 
 class CompareInt : public Compare <int>

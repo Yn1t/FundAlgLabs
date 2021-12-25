@@ -92,10 +92,9 @@ protected:
 	Insert_template* inserter_;
 
 	typename Tree<Key, Value>() {};
-
-public:
 	Node* root;
 
+public:
 	typename Tree<Key, Value>(Compare<Key>* comparator)
 	{
 		this->root = nullptr;

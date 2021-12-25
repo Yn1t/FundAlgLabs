@@ -15,21 +15,6 @@ int main()
 
 	try
 	{
-		/*tree.insert({1, 8});
-		tree.insert({ 0, 4 });
-		tree.insert({ 9, 9 });
-		tree.insert({ 10, 10 });
-		tree.insert({ 2, 8 });
-		tree.insert({ 4, 4 });
-		tree.insert({ 3, 9 });
-		tree.insert({ 6, 8 });
-		tree.insert({ 5, 4 });
-		cout << tree.find(3) << endl;
-		cout << tree.find(5) << endl;
-		cout << tree.find(1) << endl;
-		tree.del(6);
-		cout << tree.find(6) << endl;
-		*/
 		tree.insert({ 3, 1 });
 		tree.insert({ 1, 0 });
 		tree.insert({ 0, 1 });

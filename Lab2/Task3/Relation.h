@@ -33,7 +33,6 @@ public:
 		Splay_Tree,
 		Two_Three_tree
 	};
-
 	vector<Node> nodes;
 
 	typename ~Relation()
@@ -123,7 +122,7 @@ public:
 		return *this;
 	};
 
-	typename const Value& remove(const Key& key)
+	typename const Value remove(const Key& key)
 	{
 		Value temp_value;
 
